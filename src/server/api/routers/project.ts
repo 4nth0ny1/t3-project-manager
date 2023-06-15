@@ -9,7 +9,7 @@ import {
 export const projectRouter = createTRPCRouter({
 
 
-  getAllProjects: publicProcedure.query(({ ctx }) => {
+  getAllProjects: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.project.findMany();
   }),
 
