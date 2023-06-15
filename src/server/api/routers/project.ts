@@ -13,6 +13,16 @@ export const projectRouter = createTRPCRouter({
     return ctx.prisma.project.findMany();
   }),
 
+  getOneProject: protectedProcedure
+  .input(z.object({projectId: z.string().cuid()}))
+  .query(({ctx, input}) => {
+    return ctx.prisma.project.findUnique({
+      where: {
+        id: input.projectId
+      }
+    })
+  }),
+
   createProject: protectedProcedure
   .input(z.object({name: z.string(), description: z.string()}))
   .mutation(({ctx, input}) => {
