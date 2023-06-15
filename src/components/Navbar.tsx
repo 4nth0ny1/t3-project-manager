@@ -6,9 +6,9 @@ export function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn-ghost btn text-xl normal-case">
+        <Link href="/" className="btn-ghost btn text-xl normal-case">
           <span className="text-[hsl(280,100%,70%)]">T3</span> Project Manager
-        </a>
+        </Link>
       </div>
       <div className="flex-none gap-2">
         <div className="dropdown-end dropdown">

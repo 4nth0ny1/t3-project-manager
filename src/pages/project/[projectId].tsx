@@ -10,14 +10,13 @@ const SingleProjectPage: NextPage = () => {
     projectId,
   });
 
-  console.log(data);
-
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Something went wrong:</div>;
 
   return (
     <div>
       <h2>{data?.name}</h2>
+      <p>{data?.description}</p>
     </div>
   );
 };
