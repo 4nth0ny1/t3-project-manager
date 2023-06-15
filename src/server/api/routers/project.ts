@@ -37,6 +37,16 @@ export const projectRouter = createTRPCRouter({
         }
       }
     })
+  }), 
+
+  deleteProject: protectedProcedure
+  .input(z.string())
+  .mutation(({ctx, input}) => {
+    return ctx.prisma.project.delete({
+      where: {
+        id: input
+      }
+    })
   })
 
 
