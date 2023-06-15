@@ -10,9 +10,11 @@ export function ProjectList() {
   return (
     <div>
       <CreateProject />
-      {data?.map((project) => {
-        return <ProjectItem key={project.id} project={project} />;
-      })}
+      <div className="flex flex-row flex-wrap gap-4">
+        {data?.map((project) => {
+          return <ProjectItem key={project.id} project={project} />;
+        })}
+      </div>
     </div>
   );
 }

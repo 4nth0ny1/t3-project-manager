@@ -15,29 +15,33 @@ export function CreateProject() {
     },
   });
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        mutate({ name, description });
-      }}
-      className="flex flex-col p-4"
-    >
-      <h2 className="text-white">Create A New Project</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="input-bordered input w-full max-w-xs"
-      />
-      <input
-        type="text"
-        placeholder="Describe your project"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="input-bordered input w-full max-w-xs"
-      />
-      <button className="btn-accent btn">Create</button>
-    </form>
+    <div className="flex flex-row justify-center">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          mutate({ name, description });
+        }}
+        className="flex flex-col gap-2 p-4 sm:w-full lg:w-[700px]"
+      >
+        <h2 className="text-white">Create A New Project</h2>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="input-bordered input w-full border-2 border-slate-400"
+        />
+        <input
+          type="text"
+          placeholder="Describe your project"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="input-bordered input w-full border-2 border-slate-400"
+        />
+        <div className="flex flex-row justify-end">
+          <button className="btn-accent btn w-1/5">Create</button>
+        </div>
+      </form>
+    </div>
   );
 }
