@@ -20,7 +20,7 @@ export function CreateProject() {
         e.preventDefault();
         mutate({ name, description });
       }}
-      className="flex flex-col bg-slate-400 p-4"
+      className="flex flex-col p-4"
     >
       <h2 className="text-white">Create A New Project</h2>
       <input
@@ -28,14 +28,16 @@ export function CreateProject() {
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        className="input-bordered input w-full max-w-xs"
       />
       <input
         type="text"
         placeholder="Describe your project"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        className="input-bordered input w-full max-w-xs"
       />
-      <button>Create</button>
+      <button className="btn-accent btn">Create</button>
     </form>
   );
 }
