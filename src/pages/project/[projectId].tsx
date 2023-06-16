@@ -18,6 +18,7 @@ const SingleProjectPage: NextPage = () => {
     <>
       <div>
         <h2>{data?.name}</h2>
+        <p>{data?.id}</p>
         <p>{data?.description}</p>
       </div>
       <div>
