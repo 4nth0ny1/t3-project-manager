@@ -26,8 +26,13 @@ const Home: NextPage = () => {
         ) : (
           ""
         )}
-        <h2 className="text-4xl">Your Projects</h2>
-        <ProjectList />
+
+        {sessionData && (
+          <div>
+            <h2 className="text-4xl">Your Projects</h2>
+            <ProjectList />
+          </div>
+        )}
       </main>
     </>
   );
