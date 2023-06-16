@@ -1,6 +1,6 @@
 import type { Todo } from "../../types";
 import dayjs from "dayjs";
-// import Link from "next/link";
+import Link from "next/link";
 import { api } from "~/utils/api";
 
 type TodoProps = {
