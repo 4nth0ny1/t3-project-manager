@@ -14,11 +14,11 @@ export function TodoItem({ todo }: TodoProps) {
 
   const ctx = api.useContext();
 
-  //   const { mutate: deleteMutation } = api.project.deleteProject.useMutation({
-  //     onSettled: async () => {
-  //       await ctx.project.getAllProjects.invalidate();
-  //     },
-  //   });
+  const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
+    onSettled: async () => {
+      await ctx.todo.getAllTodos.invalidate();
+    },
+  });
 
   return (
     <>
@@ -32,7 +32,7 @@ export function TodoItem({ todo }: TodoProps) {
               createdAt
             ).format("MM/DD/YYYY")}`}</span>
           </div>
-          {/* <button onClick={() => deleteMutation(id)}>delete</button> */}
+          <button onClick={() => deleteMutation(id)}>delete</button>
         </div>
       </div>
     </>
