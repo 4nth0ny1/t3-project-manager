@@ -2,6 +2,21 @@ import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { ProjectList } from "../components/projects/ProjectList";
+// import { Card } from "../components/Card";
+
+function Card() {
+  return (
+    <div className="card w-96 bg-primary text-primary-content">
+      <div className="card-body">
+        <h2 className="card-title">Card title!</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div className="card-actions justify-end">
+          <button className="btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -17,10 +32,14 @@ const Home: NextPage = () => {
         {!sessionData ? (
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
             <div className="flex flex-col items-center gap-2">
-              <p className="text-2xl text-white">
-                {!sessionData ? "Sign in to create project" : ""}
-              </p>
+              <h1 className="sm:text-xl md:text-3xl lg:text-5xl">
+                Welcome to the T3 Project Manager
+              </h1>
+              <p className="text-2xl">Sign In to Create a Project</p>
               <AuthShowcase />
+              <div>
+                <Card />
+              </div>
             </div>
           </div>
         ) : (
@@ -49,7 +68,7 @@ const AuthShowcase: React.FC = () => {
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
       </p>
       <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        className="btn-accent btn rounded-full px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}
