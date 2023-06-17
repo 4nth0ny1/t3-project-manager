@@ -17,9 +17,8 @@ const SingleProjectPage: NextPage = () => {
 
   return (
     <>
-      <div>
-        <h2>{data?.name}</h2>
-        <p>{data?.id}</p>
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="text-3xl">{data?.name}</h2>
         <p>{data?.description}</p>
       </div>
       <div>

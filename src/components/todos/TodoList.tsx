@@ -1,7 +1,6 @@
 import { TodoItem } from "./TodoItem";
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
-// import { CreateProject } from "./CreateProject";
 
 export function TodoList() {
   const router = useRouter();
@@ -15,7 +14,6 @@ export function TodoList() {
   if (isError) return <div>Something went wrong</div>;
   return (
     <div>
-      {/* <CreateProject /> */}
       <div className="mt-8 flex flex-col items-center justify-center gap-4">
         {data?.map((todo) => {
           return <TodoItem key={todo.id} todo={todo} />;
