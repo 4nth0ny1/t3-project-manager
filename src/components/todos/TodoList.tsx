@@ -16,7 +16,7 @@ export function TodoList() {
   return (
     <div>
       {/* <CreateProject /> */}
-      <div className="flex flex-row flex-wrap justify-center gap-4">
+      <div className="mt-8 flex flex-col items-center justify-center gap-4">
         {data?.map((todo) => {
           return <TodoItem key={todo.id} todo={todo} />;
         })}
