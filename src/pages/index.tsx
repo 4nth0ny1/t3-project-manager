@@ -2,21 +2,7 @@ import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { ProjectList } from "../components/projects/ProjectList";
-// import { Card } from "../components/Card";
-
-function Card() {
-  return (
-    <div className="card w-96 bg-primary text-primary-content">
-      <div className="card-body">
-        <h2 className="card-title">Card title!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn">Buy Now</button>
-        </div>
-      </div>
-    </div>
-  );
-}
+import { Card } from "../components/Card";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -32,13 +18,27 @@ const Home: NextPage = () => {
         {!sessionData ? (
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
             <div className="flex flex-col items-center gap-2">
-              <h1 className="sm:text-xl md:text-3xl lg:text-5xl">
+              <h1 className="text-center text-3xl md:text-3xl lg:text-5xl">
                 Welcome to the T3 Project Manager
               </h1>
               <p className="text-2xl">Sign In to Create a Project</p>
               <AuthShowcase />
-              <div>
-                <Card />
+              <div className="flex flex-col justify-center gap-4 md:flex-row lg:flex-row">
+                <Card
+                  title="Organization"
+                  description="Stay on track with your next project"
+                  color="bg-primary"
+                />
+                <Card
+                  title="Time-Sensitive Goals"
+                  description="Create Sprints for Large Projects"
+                  color="bg-secondary"
+                />
+                <Card
+                  title="Multi-Task"
+                  description="Stay update with multiple projects at a time"
+                  color="bg-info"
+                />
               </div>
             </div>
           </div>
