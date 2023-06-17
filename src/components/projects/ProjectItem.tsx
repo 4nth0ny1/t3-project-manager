@@ -2,6 +2,7 @@ import type { Project } from "../../types";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { api } from "~/utils/api";
+import { IoTrashBinSharp } from "react-icons/io5";
 
 type ProjectProps = {
   project: Project;
@@ -33,7 +34,14 @@ export function ProjectItem({ project }: ProjectProps) {
               createdAt
             ).format("MM/DD/YYYY")}`}</span>
           </div>
-          <button onClick={() => deleteMutation(id)}>delete</button>
+          <div className="flex flex-row justify-end">
+            <button
+              className="pr-1 text-2xl text-error"
+              onClick={() => deleteMutation(id)}
+            >
+              <IoTrashBinSharp />
+            </button>
+          </div>
         </div>
       </div>
     </>

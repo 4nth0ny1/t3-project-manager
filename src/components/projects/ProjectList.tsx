@@ -9,6 +9,7 @@ export function ProjectList() {
   if (isError) return <div>Something went wrong</div>;
   return (
     <div>
+      <h2 className="text-center text-4xl">Your Projects</h2>
       <CreateProject />
       <div className="flex flex-row flex-wrap justify-center gap-4">
         {data?.map((project) => {

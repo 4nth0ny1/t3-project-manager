@@ -48,7 +48,6 @@ const Home: NextPage = () => {
 
         {sessionData && (
           <div>
-            <h2 className="text-4xl">Your Projects</h2>
             <ProjectList />
           </div>
         )}
