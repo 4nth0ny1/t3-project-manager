@@ -1,14 +1,14 @@
 import { type NextPage } from "next";
-import { api } from "../../utils/api";
+import { api } from "../../../utils/api";
 import { useRouter } from "next/router";
-import { SprintList } from "../../components/sprints/SprintList";
+import { TodoList } from "../../../components/todos/TodoList";
 
-const SingleProjectPage: NextPage = () => {
+const SingleSprintPage: NextPage = () => {
   const router = useRouter();
-  const projectId = router.query.projectId as string;
+  const sprintId = router.query.sprintId as string;
 
-  const { data, isLoading, isError } = api.project.getOneProject.useQuery({
-    projectId,
+  const { data, isLoading, isError } = api.sprint.getOneSprint.useQuery({
+    sprintId,
   });
 
   if (isLoading) return <div>Loading ...</div>;
@@ -18,11 +18,12 @@ const SingleProjectPage: NextPage = () => {
     <>
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-3xl">{data?.name}</h2>
-        <p>{data?.description}</p>
+        <p>{data?.number}</p>
       </div>
-      <SprintList />
+
+      <TodoList />
     </>
   );
 };
 
-export default SingleProjectPage;
+export default SingleSprintPage;

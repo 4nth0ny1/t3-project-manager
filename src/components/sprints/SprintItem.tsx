@@ -1,37 +1,40 @@
-import type { Todo } from "../../types";
+import type { Sprint } from "../../types";
 import dayjs from "dayjs";
 import { api } from "~/utils/api";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { BiEdit } from "react-icons/bi";
+import Link from "next/link";
 
-type TodoProps = {
-  todo: Todo;
+type SprintProps = {
+  sprint: Sprint;
 };
 
 dayjs().format("L LT");
 
-export function TodoItem({ todo }: TodoProps) {
-  const { id, name, description, createdAt } = todo;
+export function SprintItem({ sprint }: SprintProps) {
+  const { id, name, number, createdAt } = sprint;
 
-  //   const ctx = api.useContext();
+  const ctx = api.useContext();
 
-  //   const { mutate: deleteMutation } = api.todo.deleteTodo.useMutation({
-  //     onSettled: async () => {
-  //       await ctx.todo.getAllTodos.invalidate();
-  //     },
-  //   });
+  const { mutate: deleteMutation } = api.sprint.deleteSprint.useMutation({
+    onSettled: async () => {
+      await ctx.sprint.getAllSprints.invalidate();
+    },
+  });
 
   return (
     <div className="flex w-[800px] flex-col rounded-xl border border-accent p-2 shadow-lg">
       <div className="flex flex-row justify-between gap-4">
-        <h2>{name}</h2>
+        <Link href={`/project/sprint/${id}`}>
+          <h2>{name}</h2>
+        </Link>
 
         <span className="font-thin italic">{` Created ${dayjs(createdAt).format(
           "MM/DD/YYYY"
         )}`}</span>
-        {description}
+        {number}
 
-        {/* <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between">
           <button className="pr-2 text-2xl text-warning">
             <BiEdit />
           </button>
@@ -41,7 +44,7 @@ export function TodoItem({ todo }: TodoProps) {
           >
             <IoTrashBinSharp />
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
