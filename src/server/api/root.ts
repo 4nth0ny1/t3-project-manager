@@ -1,5 +1,7 @@
 import { projectRouter } from "~/server/api/routers/project";
+import { sprintRouter } from "~/server/api/routers/sprint";
 import { todoRouter } from "~/server/api/routers/todo";
+
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**
@@ -9,7 +11,8 @@ import { createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   project: projectRouter,
-  todo: todoRouter,
+  sprint: sprintRouter,
+  todo: todoRouter
 });
 
 // export type definition of API

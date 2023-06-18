@@ -1,14 +1,13 @@
 import { api } from "../../utils/api";
 import { useRouter } from "next/router";
-import { TodoItem } from "./TodoItem";
+import { SprintItem } from "./SprintItem";
 
-export function TodoList() {
+export function SprintList() {
   const router = useRouter();
+  const projectId = router.query.projectId as string;
 
-  const sprintId = router.query.sprintId as string;
-
-  const { data, isLoading, isError } = api.todo.getAllTodos.useQuery({
-    sprintId,
+  const { data, isLoading, isError } = api.sprint.getAllSprints.useQuery({
+    projectId,
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -16,9 +15,8 @@ export function TodoList() {
   return (
     <div>
       <div className="mt-8 flex flex-col items-center justify-center gap-4">
-        <h1>hi there</h1>
-        {data?.map((todo) => {
-          return <TodoItem key={todo.id} todo={todo} />;
+        {data?.map((sprint) => {
+          return <SprintItem key={sprint.id} sprint={sprint} />;
         })}
       </div>
     </div>
